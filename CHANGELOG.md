@@ -4,6 +4,17 @@ All notable changes to this project are documented here. Versioning follows
 [Semantic Versioning](https://semver.org/). The version here must match
 `package.json` `version`.
 
+## [0.1.1] — 2026-07-12
+
+### Added
+- MIT `LICENSE`.
+- Package metadata: `license`, `author`, `repository`, `bugs`, `homepage`,
+  `keywords`.
+
+### Changed
+- Package `name` → `rcw-mcp` (matches the GitHub repo).
+- Clone-based install instructions in README/INSTALL (no hardcoded local paths).
+
 ## [0.1.0] — 2026-07-12
 
 ### Added

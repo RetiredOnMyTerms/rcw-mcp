@@ -93,3 +93,8 @@ scripts/
 - `get_section` caches parsed sections in memory for 1 hour (process lifetime).
 - All statute content is © the State of Washington; this tool only fetches and formats
   public pages.
+
+## License
+
+[MIT](LICENSE) © James Whelan. Covers this tool's code only — RCW statutory
+text is a work of the State of Washington.

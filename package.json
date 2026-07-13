@@ -1,11 +1,29 @@
 {
-  "name": "chaimp-mcp-rcw",
-  "version": "0.1.0",
+  "name": "rcw-mcp",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "description": "MCP server for the Revised Code of Washington (RCW)",
+  "license": "MIT",
+  "author": "James Whelan",
+  "homepage": "https://github.com/RetiredOnMyTerms/rcw-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RetiredOnMyTerms/rcw-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RetiredOnMyTerms/rcw-mcp/issues"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "rcw",
+    "washington",
+    "legislation",
+    "law"
+  ],
   "bin": {
-    "chaimp-mcp-rcw": "dist/index.js"
+    "rcw-mcp": "dist/index.js"
   },
   "scripts": {
     "build": "tsc",
