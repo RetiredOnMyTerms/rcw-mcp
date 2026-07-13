@@ -7,12 +7,12 @@ MCP server for the **Revised Code of Washington** — exposes `get_section`,
 
 - **Node.js 18+** (uses global `fetch`)
 - **Claude Code** (or another MCP client)
-- Repo at `c:\zedcode\chaimp-mcp-rcw`
+- Repo at `c:\zedcode\mcp-rcw`
 
 ## 1. Install dependencies
 
 ```sh
-cd c:\zedcode\chaimp-mcp-rcw
+cd c:\zedcode\mcp-rcw
 npm install
 ```
 
@@ -29,14 +29,14 @@ npx tsx scripts/mcpcheck.ts   # spawns the server, lists + calls tools over MCP
 **Run from source (no build step, easiest):**
 
 ```sh
-claude mcp add rcw --scope user -- npx tsx c:/zedcode/chaimp-mcp-rcw/src/index.ts
+claude mcp add rcw --scope user -- npx tsx c:/zedcode/mcp-rcw/src/index.ts
 ```
 
 **Or build once and run compiled JS (faster startup):**
 
 ```sh
 npm run build
-claude mcp add rcw --scope user -- node c:/zedcode/chaimp-mcp-rcw/dist/index.js
+claude mcp add rcw --scope user -- node c:/zedcode/mcp-rcw/dist/index.js
 ```
 
 Scopes: `--scope user` = available in every project. Use `--scope local`
@@ -88,7 +88,7 @@ Add to the client's MCP config (`claude_desktop_config.json`):
   "mcpServers": {
     "rcw": {
       "command": "npx",
-      "args": ["tsx", "c:/zedcode/chaimp-mcp-rcw/src/index.ts"]
+      "args": ["tsx", "c:/zedcode/mcp-rcw/src/index.ts"]
     }
   }
 }

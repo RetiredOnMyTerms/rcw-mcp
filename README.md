@@ -37,14 +37,14 @@ npm run smoke         # hit all three data sources, print results
 Run source directly with tsx (no build step):
 
 ```sh
-claude mcp add rcw -- npx tsx c:/zedcode/chaimp-mcp-rcw/src/index.ts
+claude mcp add rcw -- npx tsx c:/zedcode/mcp-rcw/src/index.ts
 ```
 
 Or build and point at the compiled output:
 
 ```sh
 npm run build
-claude mcp add rcw -- node c:/zedcode/chaimp-mcp-rcw/dist/index.js
+claude mcp add rcw -- node c:/zedcode/mcp-rcw/dist/index.js
 ```
 
 Then in a Claude Code session:
