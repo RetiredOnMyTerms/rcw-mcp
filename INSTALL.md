@@ -6,15 +6,20 @@ MCP server for the **Revised Code of Washington** — exposes `get_section`,
 ## Prerequisites
 
 - **Node.js 18+** (uses global `fetch`)
+- **Git**
 - **Claude Code** (or another MCP client)
-- Repo at `c:\zedcode\mcp-rcw`
 
-## 1. Install dependencies
+## 1. Clone & install
 
 ```sh
-cd c:\zedcode\mcp-rcw
+git clone https://github.com/RetiredOnMyTerms/rcw-mcp.git
+cd rcw-mcp
 npm install
 ```
+
+The commands below assume your shell is **in the repo root** (`rcw-mcp`). They
+use `$(pwd)` (POSIX) or `$(Get-Location)` (PowerShell) so nothing is
+machine-specific — no need to hard-code a path.
 
 ## 2. Verify it works (optional but recommended)
 
@@ -26,17 +31,31 @@ npx tsx scripts/mcpcheck.ts   # spawns the server, lists + calls tools over MCP
 
 ## 3. Register with Claude Code
 
+An MCP server needs an **absolute** path (Claude Code may launch it from any
+directory). Run these **from the repo root** so the path is filled in for you.
+
 **Run from source (no build step, easiest):**
 
+macOS / Linux / Git Bash:
 ```sh
-claude mcp add rcw --scope user -- npx tsx c:/zedcode/mcp-rcw/src/index.ts
+claude mcp add rcw --scope user -- npx tsx "$(pwd)/src/index.ts"
+```
+
+Windows PowerShell:
+```powershell
+claude mcp add rcw --scope user -- npx tsx "$(Get-Location)\src\index.ts"
 ```
 
 **Or build once and run compiled JS (faster startup):**
 
 ```sh
 npm run build
-claude mcp add rcw --scope user -- node c:/zedcode/mcp-rcw/dist/index.js
+# macOS / Linux / Git Bash:
+claude mcp add rcw --scope user -- node "$(pwd)/dist/index.js"
+```
+```powershell
+# Windows PowerShell:
+claude mcp add rcw --scope user -- node "$(Get-Location)\dist\index.js"
 ```
 
 Scopes: `--scope user` = available in every project. Use `--scope local`
@@ -81,14 +100,15 @@ claude mcp remove rcw    # unregister
 
 ## Other MCP clients (e.g. Claude Desktop)
 
-Add to the client's MCP config (`claude_desktop_config.json`):
+Add to the client's MCP config (`claude_desktop_config.json`), using the
+**absolute path to your clone**:
 
 ```json
 {
   "mcpServers": {
     "rcw": {
       "command": "npx",
-      "args": ["tsx", "c:/zedcode/mcp-rcw/src/index.ts"]
+      "args": ["tsx", "/absolute/path/to/rcw-mcp/src/index.ts"]
     }
   }
 }
@@ -96,8 +116,8 @@ Add to the client's MCP config (`claude_desktop_config.json`):
 
 ## Troubleshooting
 
-- **Not `✔ Connected`** → run `npm install` in the repo; check the path in the
-  add command is correct.
+- **Not `✔ Connected`** → run `npm install` in the repo; make sure the path in
+  the add command is absolute and points at your clone.
 - **Tools missing in session** → restart the session (tools load at startup).
 - **A tool errors** → data source may be down or markup changed; run
   `npm run smoke` to isolate which of the three sources failed.
